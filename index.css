@@ -1,0 +1,35 @@
+body {
+    touch-action: none; /*https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action*/
+    font-family: "Roboto";
+    background-color: #f5f5f5 !important;
+    min-height: 75rem;
+    padding-top: 4.5rem;
+  }
+  h1 {
+    margin: 50px;
+    font-size: 70px;
+    text-align: center;
+  }
+  #paint {
+    border:5px solid  #85929e ;
+    margin: auto;
+    border-radius: 10px;
+  }
+  #predicted { 
+    font-size: 39px;
+    margin-top: 60px;
+    text-align: center;
+  }
+  #number {
+    border: 3px solid black;
+    margin: auto;
+    margin-top: auto;
+    margin-top: 30px;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-table;
+  }
+  #clear {
+    margin: auto;
+    text-align: center;
+  }
