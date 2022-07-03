@@ -124,16 +124,14 @@
       canvas.removeEventListener('mousemove', onPaint, false);
       var img = new Image();
       img.onload = function() {
-        // context.drawImage(img, 0, 0, 28, 28);
-        // data = context.getImageData(0, 0, 28, 28).data;
-        context.drawImage(img, 0, 0, 26, 26);
-        data = context.getImageData(0, 0, 26, 26).data;
-        console.log("data length, ", data.length);
+        context.drawImage(img, 0, 0, 28, 28);
+        data = context.getImageData(0, 0, 28, 28).data;
+        console.log(data);
         var input = [];
         for(var i = 0; i < data.length; i += 4) {
-          console.log(i);
           input.push(data[i + 2] / 255);
         }
+        console.log(input.length, data.length);
         predict(input);
       };
       img.src = canvas.toDataURL('image/png');
@@ -170,7 +168,10 @@
 
     var predict = function(input) {
       if (window.model) {
-        window.model.predict([tf.tensor(input).reshape([-1, 26, 26, 64])]).array().then(function(scores){
+        console.log(input, window.model);
+        const tf_input = tf.tensor(input).reshape([1, 28, 28, 1]);
+        console.log("tf input", tf_input);
+        window.model.predict([tf_input]).array().then(function(scores){
           scores = scores[0];
           predicted = scores.indexOf(Math.max(...scores));
           $('#number').html(predicted);
