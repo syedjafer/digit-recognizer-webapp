@@ -126,8 +126,10 @@
       img.onload = function() {
         context.drawImage(img, 0, 0, 28, 28);
         data = context.getImageData(0, 0, 28, 28).data;
+        console.log("data length, ", data.length);
         var input = [];
         for(var i = 0; i < data.length; i += 4) {
+          console.log(i);
           input.push(data[i + 2] / 255);
         }
         predict(input);
